@@ -1,0 +1,31 @@
+container:
+  sourceImage: perigee-android-source:latest
+  runnerImageName: perigee-android-runner:latest
+  platform: linux/amd64
+  runOptions:
+    - --cpus
+    - "2"
+    - --memory
+    - 4G
+
+github:
+  org: ExampleOrg
+  appId: 1234567
+  installationId: 123456789
+  pem: ~/.ssh/github-app.pem
+
+runner:
+  group: RunnerGroup
+  labels:
+    - android
+    - ubuntu24.04
+  namePrefix: android
+  count: 3
+
+# Optional: host directory must already exist. Do not mount _work or runner state.
+# mount:
+#   source: /Volumes/cache
+#   target: /cache
+
+runtime:
+  pollIntervalSeconds: 10
